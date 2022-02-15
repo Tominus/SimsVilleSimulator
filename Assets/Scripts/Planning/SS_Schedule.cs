@@ -9,9 +9,4 @@ public class SS_Schedule
 
     public float StartTime => startTime;
     public float EndTime => endTime;
-
-    public bool IsOpen(float _dayTime)
-    {
-        return _dayTime >= startTime && _dayTime <= endTime;
-    }
 }
