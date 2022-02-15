@@ -280,8 +280,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingType: 2
   buildingColor: {r: 1, g: 1, b: 1, a: 1}
-  rallyPoint: {fileID: 0}
-  schedules: []
+  rallyPoint: {fileID: 13487033}
+  schedules:
+  - startTime: 7
+    endTime: 11
+  - startTime: 13
+    endTime: 18
 --- !u!4 &921059875
 Transform:
   m_ObjectHideFlags: 0

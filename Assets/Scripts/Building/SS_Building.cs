@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 public class SS_Building : MonoBehaviour
@@ -14,14 +15,17 @@ public class SS_Building : MonoBehaviour
 
     public bool IsValid => rallyPoint;
 
+    public Color BuildingColor => buildingColor;
     public Transform RallyPoint => rallyPoint;
-    public Vector3 RallyPosition => IsValid ? rallyPoint.position : Vector3.zero;
 
     #endregion
 
     #region Methods
 
-
+    public bool IsOpen(float _dayTime)
+    {
+        return schedules.Where(s => _dayTime >= s.StartTime && _dayTime <= s.EndTime).ToList().Count > 0;
+    }
 
     #endregion
 }
