@@ -21,11 +21,17 @@ public class SS_DailyPlanning
     }
     public void Sub()
     {
-
+        foreach (SS_Task _task in allTask)
+        {
+            _task.Sub();
+        }
     }
     public void UnSub()
     {
-
+        foreach (SS_Task _task in allTask)
+        {
+            _task.UnSub();
+        }
     }
     public void SetWeekDay(int _weekDay)
     {

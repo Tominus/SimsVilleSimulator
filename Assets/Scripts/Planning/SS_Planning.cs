@@ -15,6 +15,7 @@ public class SS_Planning
         {
             _daily.Init();
         }
+        //TODO Init to DayCycle
     }
     public void DailyPlanningSub(int _currentDay)
     {
