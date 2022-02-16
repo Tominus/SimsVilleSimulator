@@ -12,9 +12,11 @@ public class SS_Building : MonoBehaviour
     [SerializeField] Color buildingColor = Color.white;
     [SerializeField] Transform rallyPoint = null;
 
+    [SerializeField, Header("Building Graphics")] Renderer buildingRenderer = null;
+
     [SerializeField, Header("Building Schedule")] List<SS_Schedule> schedules = new List<SS_Schedule>();
 
-    public bool IsValid => rallyPoint;
+    public bool IsValid => rallyPoint && buildingRenderer;
 
     public Color BuildingColor => buildingColor;
     public string BuildingName => buildingName;
@@ -28,6 +30,12 @@ public class SS_Building : MonoBehaviour
     public bool IsOpen(float _dayTime)
     {
         return schedules.Where(s => _dayTime >= s.StartTime && _dayTime <= s.EndTime).ToList().Count > 0;
+    }
+
+    public void ApplyColor()
+    {
+        if (!IsValid) return;
+        buildingRenderer.material.SetColor("_BaseColor", buildingColor);
     }
 
     #endregion

@@ -30,6 +30,7 @@ public class SS_BuildingManager : MonoBehaviour
         if (!_prefab) return;
         SS_Building _building = Instantiate(_prefab);
         _building.gameObject.name = _building.BuildingName;
+        _building.ApplyColor();
         allBuildings.Add(_building);
     }
 

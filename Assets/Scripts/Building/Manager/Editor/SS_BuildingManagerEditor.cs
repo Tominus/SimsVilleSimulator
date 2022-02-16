@@ -138,6 +138,7 @@ public class SS_BuildingManagerEditor : SS_CustomTemplateEditor<SS_BuildingManag
             _bType.enumValueIndex = buildingType;
             _bColor.colorValue = buildingColor;
             _buildingProperty.ApplyModifiedProperties();
+            building.ApplyColor();
             building = null;
         }
     }
