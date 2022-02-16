@@ -23,7 +23,7 @@ public class SS_PassengerEditor : SS_CustomTemplateEditor<SS_Passenger>
     }
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        //base.OnInspectorGUI();
         OnInspectorUpdate?.Invoke();
     }
 

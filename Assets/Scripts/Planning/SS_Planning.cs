@@ -18,7 +18,7 @@ public class SS_Planning
         {
             _daily.Init();
         }
-        //TODO Init to DayCycle
+        SS_World.Instance.DayCycle.UpdateDay += DailyPlanningSub;
     }
     public void OnDestroy()
     {

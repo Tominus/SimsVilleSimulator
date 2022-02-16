@@ -5,7 +5,7 @@ public class SS_World : SS_Singleton<SS_World>
     [SerializeField] SS_GameUI gameUI = null;
     [SerializeField] SS_DayCycle dayCycle = null;
     [SerializeField] SS_PlanningManager planningManager = new SS_PlanningManager();
-    //[SerializeField] SS_BuildingManager buildingManager = null;
+    [SerializeField] SS_BuildingManager buildingManager = null;
 
     public bool IsValid => gameUI;
     public SS_GameUI GameUI => gameUI;
