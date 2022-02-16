@@ -130,6 +130,10 @@ public class SS_BuildingManagerEditor : SS_CustomTemplateEditor<SS_BuildingManag
 
         }
 
+        EditorGUILayout.Space();
+
+        
+
         bool _done = GUILayout.Button("Done");
         if (_done)
         {

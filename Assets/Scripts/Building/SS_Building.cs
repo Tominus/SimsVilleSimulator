@@ -22,6 +22,7 @@ public class SS_Building : MonoBehaviour
     public string BuildingName => buildingName;
     public SS_BuildingType BuildingType => buildingType;
     public Transform RallyPoint => rallyPoint;
+    public List<SS_Schedule> Schedules => schedules;
 
     #endregion
 
