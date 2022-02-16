@@ -71,5 +71,7 @@ public class SS_DayCycle : MonoBehaviour
     public void SetCanStart(bool _state)
     {
         canStart = _state;
+        UpdateTime?.Invoke(currentTimeInHours);
+        UpdateDay?.Invoke(currentDay);
     }
 }

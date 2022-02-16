@@ -5,14 +5,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent), typeof(MeshRenderer))]
 public class SS_Passenger : MonoBehaviour
 {
-    [SerializeField] SS_Planning planning = null;
+    [SerializeField] int planningIndex = -1;
     [SerializeField, Range(1, 10)] float worldSpeedMultiplyer = 10;
     [SerializeField] SS_NavAgentData agentData = new SS_NavAgentData();
 
+    SS_Planning planning = null;
     NavMeshAgent agent = null;
     MeshRenderer render = null;
 
-    public bool IsValid => agent && render && planning != null;
+    public bool IsValid => agent && render;
     public SS_Planning Planning => planning;
 
     private void Start()
@@ -36,7 +37,14 @@ public class SS_Passenger : MonoBehaviour
     }
     void InitPlanningSub()
     {
-        SS_DailyPlanning[] _dailyPlanning = planning.AllDaily;
+        SS_Planning _planning = SS_World.Instance.PlanningManager.GetPlanning(planningIndex);
+        
+        if (_planning == null)
+        {
+            Debug.LogError("aaa");
+            return;
+        }
+        SS_DailyPlanning[] _dailyPlanning = _planning.AllDaily;
         int _maxDaily = _dailyPlanning.Length;
         for (int i = 0; i < _maxDaily; i++)
         {
@@ -50,12 +58,14 @@ public class SS_Passenger : MonoBehaviour
                 SS_Task _task = _allTask[j];
                 if (_task == null) continue;
                 _task.OnTaskUpdate += SetTask;
+                
             }
         }
     }
 
     void SetTask(SS_Task _task)
     {
+        
         SS_Building _building = _task.Building;
         MoveTo(_building.RallyPoint.position);
         UpdateColor(_building.BuildingColor);
@@ -77,6 +87,10 @@ public class SS_Passenger : MonoBehaviour
     public void SetPlanning(SS_Planning _planning)
     {
         planning = _planning;
+    }
+    public void SetPlanningIndex(int _index)
+    {
+        planningIndex = _index;
     }
 }
 

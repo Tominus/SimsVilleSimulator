@@ -9,7 +9,7 @@ public class SS_Task
     [SerializeField] SS_Schedule schedule = new SS_Schedule();
     [SerializeField] SS_Building building = null;
 
-    bool hasAlreadyUpdate = false;
+    [SerializeField] bool hasAlreadyUpdate = false;
 
     public SS_Building Building => building;
 
@@ -27,6 +27,7 @@ public class SS_Task
         bool _state = _dayTime >= schedule.StartTime && _dayTime <= schedule.EndTime;
         if (!hasAlreadyUpdate && _state)
         {
+            
             OnTaskUpdate?.Invoke(this);
             hasAlreadyUpdate = true;
         }

@@ -11,7 +11,7 @@ public class SS_PlanningManagerEditor : SS_CustomTemplateEditor<SS_PlanningManag
     }
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
 
     }
 }

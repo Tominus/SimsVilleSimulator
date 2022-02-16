@@ -23,7 +23,7 @@ public class SS_PassengerEditor : SS_CustomTemplateEditor<SS_Passenger>
     }
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
         OnInspectorUpdate?.Invoke();
     }
 
@@ -60,7 +60,7 @@ public class SS_PassengerEditor : SS_CustomTemplateEditor<SS_Passenger>
         window.InitAIPlanning(aiPlanning);
         window.OnPlanningSelected += SetAIPlanning;
     }
-    void SetAIPlanning(SS_Planning _planning)
+    void SetAIPlanning(SS_Planning _planning, int _index)
     {
         if (_planning == null)
         {
@@ -68,6 +68,7 @@ public class SS_PassengerEditor : SS_CustomTemplateEditor<SS_Passenger>
             return;
         }
         eTarget.SetPlanning(_planning);
+        eTarget.SetPlanningIndex(_index);
         window.Close();
     }
 }

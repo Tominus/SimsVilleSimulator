@@ -6,7 +6,7 @@ public class SS_DailyPlanning
 {
     [SerializeField] SS_Task[] allTask = new SS_Task[6];
 
-    int weekDay = -1; //potentially saved
+    [SerializeField] int weekDay = -1; //potentially saved
 
     public SS_Task[] AllTask => allTask;
     public int WeekDay => weekDay;

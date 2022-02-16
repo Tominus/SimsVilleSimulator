@@ -4,10 +4,10 @@ using System;
 
 public class SS_PassengerEditorWindow : EditorWindow
 {
-    public event Action<SS_Planning> OnPlanningSelected = null;
+    public event Action<SS_Planning, int> OnPlanningSelected = null;
     public event Action OnGUIUpdate = null;
 
-    SS_Planning[] allPlannings = new SS_Planning[0];
+    SS_Planning[] allPlannings = null;
     SS_Planning aiPlanning = null;
     int count = 0;
 
@@ -55,7 +55,7 @@ public class SS_PassengerEditorWindow : EditorWindow
                     bool _buttonPressed = GUILayout.Button("Select", GetGUIStyle(_planning));
                     if (_buttonPressed)
                     {
-                        OnPlanningSelected?.Invoke(_planning);
+                        OnPlanningSelected?.Invoke(_planning, i);
                     }
                 }
                 GUILayout.EndHorizontal();
@@ -66,7 +66,7 @@ public class SS_PassengerEditorWindow : EditorWindow
     GUIStyle GetGUIStyle(SS_Planning _planning, FontStyle _font = FontStyle.Normal)
     {
         GUIStyle _style = new GUIStyle();        
-        _style.normal.textColor = aiPlanning.Name == _planning.Name ? Color.green : Color.red;
+        _style.normal.textColor = aiPlanning == _planning ? Color.green : Color.red;
         _style.fontStyle = _font;
         return _style;
     }

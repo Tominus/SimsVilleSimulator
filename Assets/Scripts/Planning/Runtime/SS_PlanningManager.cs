@@ -28,6 +28,11 @@ public class SS_PlanningManager : MonoBehaviour
         _allPlanning.Add(_newPlanning);
         allPlanning = _allPlanning.ToArray();
     }
+    public SS_Planning GetPlanning(int _index)
+    {
+        if (_index < 0 || _index > allPlanning.Length - 1) return null;
+        return allPlanning[_index];
+    }
     private void OnDestroy()
     {
         foreach (SS_Planning _planning in allPlanning)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SS_World : SS_Singleton<SS_World>
@@ -23,12 +24,17 @@ public class SS_World : SS_Singleton<SS_World>
         //Recup le json load finish
         //planningManager.OnEndInit += SetPlanningManager; += dayCycle.Start
         planningManager.InitPlannings();
-        dayCycle.SetCanStart(true);
+        StartCoroutine(Test());
     }
 
     void SetPlanningManager(SS_PlanningManager _pm)
     {
         planningManager = _pm;
         Debug.Log("Planning manager init end");
+    }
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+        dayCycle.SetCanStart(true);
     }
 }
