@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
-[Serializable]
-public class SS_PlanningManager
+public class SS_PlanningManager : MonoBehaviour
 {
     public event Action<SS_PlanningManager> OnEndInit = null;
 
@@ -18,7 +19,16 @@ public class SS_PlanningManager
         }
         OnEndInit?.Invoke(this);
     }
-    public void OnDestroy()
+    public void AddPlanning()
+    {
+        SS_Planning _newPlanning = new SS_Planning();
+        _newPlanning.CreateAllWeekDay();
+
+        List<SS_Planning> _allPlanning = allPlanning.ToList();
+        _allPlanning.Add(_newPlanning);
+        allPlanning = _allPlanning.ToArray();
+    }
+    private void OnDestroy()
     {
         foreach (SS_Planning _planning in allPlanning)
         {

@@ -4,10 +4,10 @@ public class SS_World : SS_Singleton<SS_World>
 {
     [SerializeField] SS_GameUI gameUI = null;
     [SerializeField] SS_DayCycle dayCycle = null;
-    [SerializeField] SS_PlanningManager planningManager = new SS_PlanningManager();
+    [SerializeField] SS_PlanningManager planningManager = null;
     [SerializeField] SS_BuildingManager buildingManager = null;
 
-    public bool IsValid => gameUI;
+    public bool IsValid => gameUI && dayCycle && buildingManager;
     public SS_GameUI GameUI => gameUI;
     public SS_DayCycle DayCycle => dayCycle;
     public SS_PlanningManager PlanningManager => planningManager;
@@ -16,16 +16,14 @@ public class SS_World : SS_Singleton<SS_World>
     {
         InitSub();
     }
-    private void OnDestroy()
-    {
-        planningManager.OnDestroy();
-    }
 
     void InitSub()
     {
         if (!IsValid) return;
-        planningManager.OnEndInit += SetPlanningManager;
+        //Recup le json load finish
+        //planningManager.OnEndInit += SetPlanningManager; += dayCycle.Start
         planningManager.InitPlannings();
+        dayCycle.SetCanStart(true);
     }
 
     void SetPlanningManager(SS_PlanningManager _pm)

@@ -29,8 +29,9 @@ public class SS_Planning
         }
     }
 
-    public void SetAllWeekDay() // for editor
+    public void CreateAllWeekDay() // for editor
     {
+        allDaily = new SS_DailyPlanning[6];
         int _day = 0;
         foreach (SS_DailyPlanning _daily in allDaily)
         {
