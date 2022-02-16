@@ -7,7 +7,7 @@ public class SS_Building : MonoBehaviour
 {
     #region Fields&Properties
 
-    [SerializeField, Header("Building Settings")] SS_BuildingType buildingType = SS_BuildingType.NONE;
+    [SerializeField] SS_BuildingType buildingType = SS_BuildingType.NONE;
     [SerializeField] string buildingName = "Name";
     [SerializeField] Color buildingColor = Color.white;
     [SerializeField] Transform rallyPoint = null;
@@ -17,6 +17,8 @@ public class SS_Building : MonoBehaviour
     public bool IsValid => rallyPoint;
 
     public Color BuildingColor => buildingColor;
+    public string BuildingName => buildingName;
+    public SS_BuildingType BuildingType => buildingType;
     public Transform RallyPoint => rallyPoint;
 
     #endregion

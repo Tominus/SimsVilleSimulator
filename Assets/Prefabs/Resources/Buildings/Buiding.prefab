@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 2
+  buildingName: Building
   buildingColor: {r: 1, g: 0, b: 0, a: 1}
   rallyPoint: {fileID: 4780732774810227973}
   schedules:

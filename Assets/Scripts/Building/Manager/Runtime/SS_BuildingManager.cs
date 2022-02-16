@@ -29,7 +29,14 @@ public class SS_BuildingManager : MonoBehaviour
     {
         if (!_prefab) return;
         SS_Building _building = Instantiate(_prefab);
+        _building.gameObject.name = _building.BuildingName;
         allBuildings.Add(_building);
+    }
+
+    public SS_Building GetBuilding(int _index)
+    {
+        if (_index > allBuildings.Count) return null;
+        return allBuildings[_index];
     }
 
     #endregion
