@@ -36,7 +36,7 @@ public class SS_Building : MonoBehaviour
     public void ApplyColor()
     {
         if (!IsValid) return;
-        buildingRenderer.material.SetColor("_BaseColor", buildingColor);
+        buildingRenderer.sharedMaterial.SetColor("_BaseColor", buildingColor);
     }
 
     #endregion

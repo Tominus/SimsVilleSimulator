@@ -17,12 +17,16 @@ public class SS_BuildingWindow : EditorWindow
 
     private void OnGUI()
     {
+        
         //DrawWindow
     }
 
-    public void InitWindow(List<SS_Schedule> _schedules)
+    public void InitWindow(SS_Building _building)
     {
-        schedules = _schedules;
+        
+        Debug.Log($"{_building.name} Schedule Window debug");
+        name = $"{_building.BuildingName} Schedule Window t";
+        schedules = _building.Schedules;
     }
 
     #endregion

@@ -125,14 +125,23 @@ public class SS_BuildingManagerEditor : SS_CustomTemplateEditor<SS_BuildingManag
         buildingType = (int)(SS_BuildingType)EditorGUILayout.EnumPopup("Type :", (SS_BuildingType)buildingType);
         buildingColor = EditorGUILayout.ColorField("Color :", buildingColor);
 
-        for (int i = 0; i < _bSchedules.arraySize; i++)
-        {
+        EditorGUILayout.LabelField("Schedules");
 
+        int _max = _bSchedules.arraySize;
+        for (int i = 0; i < _max; i++)
+        {
+            continue;
+            SerializedProperty _startTime = _bSchedules.GetArrayElementAtIndex(i).FindPropertyRelative("startTime");
+            SerializedProperty _endTime = _bSchedules.GetArrayElementAtIndex(i).FindPropertyRelative("endTime");
+            EditorGUILayout.LabelField($"{_startTime.intValue} - {_endTime.intValue}");
+
+            _startTime.intValue = EditorGUILayout.IntSlider(_startTime.intValue, 0, 24);
+            _endTime.intValue = EditorGUILayout.IntSlider(_endTime.intValue, 0, 24);
         }
 
-        EditorGUILayout.Space();
+        //Schedule listing
 
-        
+        EditorGUILayout.Space();
 
         bool _done = GUILayout.Button("Done");
         if (_done)
@@ -159,6 +168,8 @@ public class SS_BuildingManagerEditor : SS_CustomTemplateEditor<SS_BuildingManag
     }
 
     #endregion
+
+    
 
     GUIStyle GetLabelStyle(Color _color, int _fontSize = 12, FontStyle _fontStyle = FontStyle.Normal)
     {
