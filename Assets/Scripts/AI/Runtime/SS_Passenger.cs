@@ -13,6 +13,7 @@ public class SS_Passenger : MonoBehaviour
     MeshRenderer render = null;
 
     public bool IsValid => agent && render && planning != null;
+    public SS_Planning Planning => planning;
 
     private void Start()
     {
@@ -23,11 +24,11 @@ public class SS_Passenger : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         render = GetComponent<MeshRenderer>();
-        //if (!IsValid) return;
+        if (!IsValid) return;
 
         SS_World.Instance.GameUI.OnWorldSpeedChange += ChangeMoveSpeed;
         InitAgentData();
-        //InitPlanningSub();
+        InitPlanningSub();
     }
     void InitAgentData()
     {
@@ -72,6 +73,10 @@ public class SS_Passenger : MonoBehaviour
         agent.speed = agentData.Speed + worldSpeedMultiplyer * _speed;
         agent.acceleration = agentData.Acceleration + worldSpeedMultiplyer * _speed;
         agent.angularSpeed = agentData.AngularSpeed + worldSpeedMultiplyer * _speed;
+    }
+    public void SetPlanning(SS_Planning _planning)
+    {
+        planning = _planning;
     }
 }
 

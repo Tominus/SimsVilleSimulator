@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class SS_Task
 {
     public event Action<SS_Task> OnTaskUpdate = null;
@@ -21,7 +22,7 @@ public class SS_Task
         OnTaskUpdate = null;
     }
 
-    public bool IsOpen(float _dayTime)
+    public void IsOpen(float _dayTime)
     {
         bool _state = _dayTime >= schedule.StartTime && _dayTime <= schedule.EndTime;
         if (!hasAlreadyUpdate && _state)
@@ -29,15 +30,14 @@ public class SS_Task
             OnTaskUpdate?.Invoke(this);
             hasAlreadyUpdate = true;
         }
-        return _state;
     }
-    public void Sub()
+    public void Sub(SS_DayCycle _dayCycle)
     {
-
+        _dayCycle.UpdateTime += IsOpen;
     }
-    public void UnSub()
+    public void UnSub(SS_DayCycle _dayCycle)
     {
-
+        _dayCycle.UpdateTime -= IsOpen;
     }
     void ResetTask()
     {
